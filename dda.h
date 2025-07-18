@@ -6,7 +6,7 @@
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:33:54 by kvalerii          #+#    #+#             */
-/*   Updated: 2025/07/18 14:55:30 by eklymova         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:26:04 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <X11/keysym.h>
 #include <math.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 #include <sys/time.h>
 
@@ -35,6 +36,8 @@
 #define MINIMAP_RADIUS 10
 #define MINIMAP_OFFSET_X 20
 #define MINIMAP_OFFSET_Y 20
+#define VERTICAL_MOVE 0.5
+
 
 typedef enum e_characters
 {
@@ -47,7 +50,7 @@ typedef enum e_characters
 	WEST = 'W',
 	SOUTH = 'S',
 	NORTH = 'N',
-	SPRIT = '2'
+	SPRITE = '2'
 }	t_characters;
 
 typedef enum e_move
@@ -118,13 +121,25 @@ typedef struct	s_player {
 
 typedef struct s_sprite
 {
-	void	*texture[2];
-	t_fvector position;
+	t_texture	**texture;
 	int		current_frame;
-	double	frame_timer;
+	long int	frame_timer;
 	double	frame_delay;
-	double  x;
-	double  y;
+	int		sprite_width;
+	int		sprite_height;
+	double	x;
+	double	y;
+	double	VspriteX;
+	double	VspriteY;
+	double	transformX;
+	double	transformY;
+	double	spriteScreenX;
+	double	draw_start_x;
+	double	draw_start_y;
+	double	draw_end_x;
+	double	draw_end_y;
+	int		vMoveScreen;
+	double	invDet;
 }	t_sprite;
 
 
@@ -149,6 +164,7 @@ typedef struct s_data
 	size_t		map_width;
 	size_t		map_height;
 	double		normilized_x[WIDTH];
+	double		ZBuffer[WIDTH];
 } t_data;
 
 typedef struct s_flash_params
@@ -203,7 +219,7 @@ bool	map_valid(t_data	*data);
 void script_init(t_data *data);
 
 // SPRITES
-void	init_sprite(t_data *data);
+int	init_sprite(t_data *data);
 void	update_sprite(t_data *data);
 void	draw_sprite(t_data *data);
 void	find_sprite_pos(t_data *data);

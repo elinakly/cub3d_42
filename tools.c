@@ -6,7 +6,7 @@
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 17:03:35 by valeriia          #+#    #+#             */
-/*   Updated: 2025/07/11 16:12:03 by eklymova         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:34:23 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,6 +296,7 @@ void	dda(t_data *data)
 		get_fixed_step_between_lines(ray, &fixed_step);
 		get_initial_step(ray, player_position_in_cell, player_cell, &initial_step, fixed_step, &step);
 		distance_to_wall = find_distance_to_wall(data, fixed_step, &initial_step, &side, &step, player_cell);
+		data->ZBuffer[x] = distance_to_wall;
 		draw_line_text(data, side, x, ray, player_position_in_cell, /* player_cell,  */distance_to_wall);
 		x++;
 	}

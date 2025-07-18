@@ -6,7 +6,7 @@
 /*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 16:28:10 by kvalerii          #+#    #+#             */
-/*   Updated: 2025/07/18 14:55:40 by eklymova         ###   ########.fr       */
+/*   Updated: 2025/07/18 15:45:38 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	display(t_data *data)
 	draw_player(data);
 	draw_flashlight(data);
 	update_sprite(data);
-	// draw_sprite(data);
+	draw_sprite(data);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.ptr, 0, 0);
 	// mlx_put_image_to_window(data->mlx, data->mlx_win,
     // data->sprite->texture[data->sprite->current_frame],

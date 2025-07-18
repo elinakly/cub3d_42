@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_valid.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kvalerii <kvalerii@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 16:01:26 by eklymova          #+#    #+#             */
-/*   Updated: 2025/07/15 18:35:25 by kvalerii         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:18:11 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	invalid_char(t_data *data)
 			if (data->map[y][x] == WALL || data->map[y][x] == WEST
 				|| data->map[y][x] == EAST || data->map[y][x] == EMPTY
 				|| data->map[y][x] == NORTH || data->map[y][x] == SOUTH
-				|| data->map[y][x] == SPACE || data->map[y][x] == SPRIT)
+				|| data->map[y][x] == SPACE || data->map[y][x] == SPRITE)
 				x++;
 			else
 				return (0);
