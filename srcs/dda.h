@@ -22,6 +22,7 @@
 # include <stdbool.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdint.h>
 
 # include <sys/time.h>
 
@@ -41,6 +42,7 @@
 # define MINIMAP_OFFSET_Y 25
 # define WIDTH 1980
 # define HEIGHT 1220
+# define VERTICAL_MOVE 0.5
 
 typedef enum e_characters
 {
@@ -52,7 +54,8 @@ typedef enum e_characters
 	EAST = 'E',
 	WEST = 'W',
 	SOUTH = 'S',
-	NORTH = 'N'
+	NORTH = 'N',
+	SPRITE = '2'
 }	t_characters;
 
 typedef enum e_move
@@ -127,6 +130,29 @@ typedef struct s_player
 	t_player_side	left_side;
 }	t_player;
 
+typedef struct s_sprite
+{
+	t_texture	**texture; //malloc
+	int		current_frame;
+	long int	frame_timer;
+	double	frame_delay;
+	int		sprite_width;
+	int		sprite_height;
+	double	x;
+	double	y;
+	double	VspriteX;
+	double	VspriteY;
+	double	transformX;
+	double	transformY;
+	double	spriteScreenX;
+	double	draw_start_x;
+	double	draw_start_y;
+	double	draw_end_x;
+	double	draw_end_y;
+	int		vMoveScreen;
+	double	invDet;
+}	t_sprite;
+
 typedef struct s_data
 {
 	void		*mlx;
@@ -135,6 +161,7 @@ typedef struct s_data
 	t_image		img;
 	long		time;
 	t_texture	*texture;
+	t_sprite	*sprite; //malloc
 	char		**script;
 	char		**map;
 	char		*e_t;
@@ -146,6 +173,7 @@ typedef struct s_data
 	int			map_width;
 	int			map_height;
 	double		normalized_x[WIDTH];
+	double		ZBuffer[WIDTH];
 }	t_data;
 
 typedef struct s_dda_parameters
@@ -279,4 +307,12 @@ void	get_wall_start_and_end(int line_height, int *start_pixel, int *end_pixel);
 //WALL COLISION
 bool	is_colliding_with_wall(t_player player, char **map, double shift_x, double shift_y);
 
+// SPRITES
+int		init_sprite(t_data *data);
+void	update_sprite(t_data *data);
+void	draw_sprite(t_data *data);
+void	find_sprite_pos(t_data *data);
+
+//TIME
+long int	time_now(void);
 #endif

@@ -14,7 +14,7 @@ NAME = dda
 MINILIBX_DIR = minilibx_linux
 MINILIBX_LIB = mlx_Linux
 OBJS_DIR  = objs
-CFLAGS := -Wall -Werror -Wextra -g
+# CFLAGS := -Wall -Werror -Wextra -g
 CC := cc
 SRC_DIR := ./srcs
 
@@ -39,7 +39,6 @@ SRCS =	main.c \
 		free_utils.c \
 		math.c \
 		map_init.c \
-		sprites.c
 		map_validation.c \
 		map_char_validation.c \
 		map_walls_checker.c \
