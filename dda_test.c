@@ -77,9 +77,9 @@ void	draw_flashlight(t_data *data)
 		a = param.start + i * param.step_angle;
 		compute_dir(&dir, data->player.direction, a);
 		end = cast_flashlight_ray(data, dir, param.map_start_x,
-				param.map_start_y);
-		draw_line(data, param.player_pos, end, WHITE);
-	}
+			param.map_start_y);
+			draw_line(data, param.player_pos, end, WHITE);
+		}
 }
 
 int	display(t_data *data)
@@ -88,7 +88,13 @@ int	display(t_data *data)
 	draw_map_fill(data);
 	draw_player(data);
 	draw_flashlight(data);
+	update_sprite(data);
+	// draw_sprite(data);
+	put_sprite_transparent(data, &data->sprite->texture[data->sprite->current_frame], WIDTH/2 - 24, HEIGHT/2 - 24);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.ptr, 0, 0);
+	// mlx_put_image_to_window(data->mlx, data->mlx_win,
+    // data->sprite->texture[data->sprite->current_frame],
+    // WIDTH / 2 - 24, HEIGHT / 2 - 24);
 	return (1);
 }
 
@@ -175,6 +181,8 @@ int upload_textures(t_data *data)
 	return (0);
 }
 
+
+
 int	initialize_data(t_data **data)
 {
 	(*data) = ft_calloc(1, sizeof(t_data));
@@ -186,6 +194,7 @@ int	initialize_data(t_data **data)
 	(*data)->img.addr = mlx_get_data_addr((*data)->img.ptr, &(*data)->img.bits_per_pixel, &(*data)->img.line_length, &(*data)->img.endian);
 	(*data)->map_height = 0;
 	(*data)->map_width = 0;
+	(*data)->time = time_now();
 	int x = 0;
 	while (x < WIDTH)
 	{
@@ -214,6 +223,8 @@ int	main(int argc, char **args)
 		return(printf("Invalid input\n"), close_event(data));
 	//!init mlx
 	init_player(data);
+	init_sprite(data);
+	find_sprite_pos(data);
 	init_hooks(data);
 	mlx_loop_hook(data->mlx, &display, data);
 	mlx_loop(data->mlx);

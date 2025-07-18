@@ -26,7 +26,7 @@ bool	invalid_char(t_data *data)
 			if (data->map[y][x] == WALL || data->map[y][x] == WEST
 				|| data->map[y][x] == EAST || data->map[y][x] == EMPTY
 				|| data->map[y][x] == NORTH || data->map[y][x] == SOUTH
-				|| data->map[y][x] == SPACE)
+				|| data->map[y][x] == SPACE || data->map[y][x] == SPRIT)
 				x++;
 			else
 				return (0);

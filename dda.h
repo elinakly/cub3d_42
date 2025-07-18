@@ -46,7 +46,8 @@ typedef enum e_characters
 	EAST = 'E',
 	WEST = 'W',
 	SOUTH = 'S',
-	NORTH = 'N'
+	NORTH = 'N',
+	SPRIT = '2'
 }	t_characters;
 
 typedef enum e_move
@@ -73,6 +74,7 @@ typedef enum e_side
 
 #define WIDTH 1980
 #define HEIGHT 1220
+
 
 typedef struct	s_image {
 	void	*ptr;
@@ -114,13 +116,26 @@ typedef struct	s_player {
 	t_fvector	plane;
 }	t_player;
 
+typedef struct s_sprite
+{
+	void	*texture[2];
+	t_fvector position;
+	int		current_frame;
+	double	frame_timer;
+	double	frame_delay;
+	double  x;
+	double  y;
+}	t_sprite;
+
+
 typedef struct s_data
 {
 	void		*mlx;
 	void		*mlx_win;
 	t_player	player;
+	t_sprite	*sprite;
 	t_image		img;
-	long		time;
+	long int	time;
 	t_texture	*texture;
 	char		**lekkereclrs;
 	char		**script;
@@ -186,4 +201,14 @@ bool	map_valid(t_data	*data);
 
 // SCRIPT
 void script_init(t_data *data);
+
+// SPRITES
+void	init_sprite(t_data *data);
+void	update_sprite(t_data *data);
+void	draw_sprite(t_data *data);
+void	find_sprite_pos(t_data *data);
+void	put_sprite_transparent(t_data *data, t_image *sprite_img, int x_pos, int y_pos);
+
+//TIME
+long int	time_now(void);
 #endif
