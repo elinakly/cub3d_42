@@ -21,6 +21,11 @@ void	textures_init(t_data *data, char *line, char c)
 		data->W_T = ft_strdup(line);
 	else if (c == 'S' && !data->S_T)
 		data->S_T = ft_strdup(line);
+	else
+	{
+		printf("Double textures\n");
+		close_event(data);
+	}
 }
 
 void	colors_init(t_data *data, char *line, char c)
@@ -34,6 +39,11 @@ void	colors_init(t_data *data, char *line, char c)
 		data->F = ft_strdup(line);
 	else if (c == 'C' && !data->C)
 		data->C = ft_strdup(line);
+	else
+	{
+		printf("Double collors\n");
+		close_event(data);
+	}
 }
 
 bool	is_map_line(char *line)
