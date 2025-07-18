@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kvalerii <kvalerii@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 12:33:54 by kvalerii          #+#    #+#             */
-/*   Updated: 2025/07/15 18:34:13 by kvalerii         ###   ########.fr       */
+/*   Updated: 2025/07/18 14:55:30 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,6 @@ void	init_sprite(t_data *data);
 void	update_sprite(t_data *data);
 void	draw_sprite(t_data *data);
 void	find_sprite_pos(t_data *data);
-void	put_sprite_transparent(t_data *data, t_image *sprite_img, int x_pos, int y_pos);
 
 //TIME
 long int	time_now(void);
