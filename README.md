@@ -79,9 +79,12 @@ make bonus
 
 W/A/S/D → Move forward/left/backward/right
 
-← / → → Rotate view or mouse
+← / → or mouse  → Rotate view
+
+SPACE → open door
 
 ESC → Exit game
+
 
 
 
