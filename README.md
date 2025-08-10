@@ -24,7 +24,6 @@ This project uses the **MiniLibX** library to render a first-person view using a
 - Customizable floor and ceiling colors.
 - Player movement & rotation with WASD + arrow keys.
 - Minimap with centered player and entities.
-- Dynamic lighting and flashlight effect.
 - Animated sprites and FOV rendering.
 
 ---
@@ -40,15 +39,15 @@ This project uses the **MiniLibX** library to render a first-person view using a
 
 ## 🗺 Map Format
 A `.cub` file contains:
-- **Texture paths** for each wall orientation:
-NO ./textures/wall_north.xpm
-SO ./textures/wall_south.xpm
-WE ./textures/wall_west.xpm
-EA ./textures/wall_east.xpm
+- **Texture paths** for each wall orientation:               
+NO ./textures/wall_north.xpm        
+SO ./textures/wall_south.xpm         
+WE ./textures/wall_west.xpm        
+EA ./textures/wall_east.xpm          
 
-- **Colors** for floor/ceiling:
-F 220,100,0
-C 225,30,0
+- **Colors** for floor/ceiling:             
+F 220,100,255         
+C 128,128,128             
 
 - **Map layout** with:
 - `1` for walls
@@ -83,3 +82,6 @@ W/A/S/D → Move forward/left/backward/right
 ← / → → Rotate view or mouse
 
 ESC → Exit game
+
+
+
