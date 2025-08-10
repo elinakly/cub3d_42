@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_raycast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: valeriia <valeriia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 17:03:35 by valeriia          #+#    #+#             */
-/*   Updated: 2025/08/03 09:42:59 by valeriia         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:29:06 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	draw_textures(
 	start_y_coordinate_on_texture = (dda_parameters->start_pixel
 			- HEIGHT / 2 + wall_height / 2) * y_increase_step;
 	draw_celing(data, dda_parameters->start_pixel, data->c, x);
-	draw_floor(data, dda_parameters->end_pixel, data->f, x);
 	while (dda_parameters->start_pixel < dda_parameters->end_pixel)
 	{
 		start_y_coordinate_on_texture += y_increase_step;
@@ -101,6 +100,7 @@ void	draw_textures(
 			);
 		dda_parameters->start_pixel++;
 	}
+	draw_floor(data, dda_parameters->end_pixel, data->f, x);
 }
 
 void	dda(t_data *data)

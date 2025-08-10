@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_color_helpers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kvalerii <kvalerii@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eklymova <eklymova@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 18:52:15 by valeriia          #+#    #+#             */
-/*   Updated: 2025/07/29 12:21:41 by kvalerii         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:27:15 by eklymova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	draw_floor(
 	screen_bottom.x = x;
 	screen_bottom.y = HEIGHT - 1;
 	start_point.x = x;
-	start_point.y = end_pixel;
+	start_point.y = end_pixel - 5;
 	draw_line(data, screen_bottom, start_point, color);
 }
 
